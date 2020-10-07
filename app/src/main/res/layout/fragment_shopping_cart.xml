@@ -30,9 +30,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shoppingCartRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="2dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:paddingBottom="80dp"/>
 
     <TextView
         android:id="@+id/emptyTextView"
@@ -43,6 +44,15 @@
         android:text="Your shopping cart is empty."
         android:textColor="@android:color/black"></TextView>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_gravity="bottom"
+        android:background="@color/colorAccent"
+        android:elevation="15dp"
+        android:padding="8dp"
+        app:elevation="4dp"
+        tools:targetApi="lollipop">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,5 +97,5 @@
             android:textSize="19sp" />
     </LinearLayout>
 
-
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
