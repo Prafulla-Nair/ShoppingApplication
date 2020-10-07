@@ -8,8 +8,8 @@ The app can be further scaled up to show a product search and product checkout f
 2. **products.model.ProductsRepository**: class for parsing the JSON in a background thread - coroutines are used for this.
 3. **products.model.Products**: Contains Products data classes.
 4. **products.view**: Fragment and adapter for products UI.
-5. **products.viewmodel.ProductsViewModel: A products viewmodel shared by cart and products list
-6. **products.viewmodel.ProductsViewModelProvider: A ViewmodelProvider used by ProductsViewModel
+5. **products.viewmodel.ProductsViewModel**: A products viewmodel shared by cart and products list
+6. **products.viewmodel.ProductsViewModelProvider**: A ViewmodelProvider used by ProductsViewModel
 7. **cart**: Contains cart related packages
 8. **cart.view**: Fragment and adapter for cart UI.
 9. **MainActivity**: Main activity handling the fragments
