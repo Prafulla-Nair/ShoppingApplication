@@ -65,7 +65,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -74,57 +74,61 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="8dp"
-            android:weightSum="2">
+            >
 
             <ImageButton
                 android:id="@+id/deleteItem"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
+                android:layout_height="25dp"
                 android:background="@color/colorPrimary"
                 android:contentDescription="@string/delete_item"
                 android:src="@drawable/ic_remove_shopping_cart"
-                android:tint="@android:color/white"/>
+                android:tint="@android:color/white"
+                android:padding="8dp"
+                android:layout_margin="8dp"/>
 
             <TextView
                 android:id="@+id/productQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:layout_weight="0.5"
+                android:layout_toRightOf="@+id/deleteItem"
                 android:background="@drawable/round_background"
-                android:gravity="center"
-                android:padding="8dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:minWidth="30dp"
+                android:layout_toEndOf="@+id/deleteItem" />
 
             <ImageButton
                 android:id="@+id/addItem"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@+id/productQuantity"
                 android:background="@color/colorAccent"
                 android:contentDescription="@string/add_product"
                 android:src="@drawable/ic_add_shopping"
-                android:tint="@android:color/white"/>
+                android:tint="@android:color/white"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@+id/productQuantity" />
 
             <ImageButton
                 android:id="@+id/removeItem"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="0.25"
+                android:layout_alignParentRight="true"
                 android:background="@color/colorPrimary"
                 android:padding="8dp"
                 android:src="@android:drawable/ic_menu_delete"
                 android:tint="@android:color/white"
                 android:contentDescription="@string/remove_product"
-                android:layout_marginStart="10dp" />
+                android:layout_margin="8dp"
+                android:layout_alignParentEnd="true" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
