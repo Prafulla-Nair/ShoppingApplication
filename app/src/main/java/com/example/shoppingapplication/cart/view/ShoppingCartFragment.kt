@@ -27,18 +27,12 @@ class ShoppingCartFragment : Fragment(){
     private lateinit var fragmentView: View
     private lateinit var cartItems: HashMap<Product, Int>
 
-
     @Inject
     lateinit var productsViewModelProvider: ProductsViewModelProvider
     private lateinit var productsViewModel: ProductsViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_shopping_cart, container, false)
-
         setupUI(fragmentView)
         subscribeUI(fragmentView)
         return fragmentView
@@ -49,18 +43,13 @@ class ShoppingCartFragment : Fragment(){
         ((activity?.application) as MyApplication).appComponent.inject(this)
     }
 
-
-
     /**Setup UI elements
      */
     private fun setupUI(view: View) {
-
         val toolbar = view.toolbar as Toolbar
         toolbar.setNavigationOnClickListener { activity!!.onBackPressed() }
 
-        productsViewModel =
-            ViewModelProvider(this, productsViewModelProvider)
-                .get(ProductsViewModel::class.java)
+        productsViewModel = ViewModelProvider(this, productsViewModelProvider).get(ProductsViewModel::class.java)
 
         shoppingCartAdapter = ShoppingCartAdapter(productsViewModel)
         view.shoppingCartRecyclerView.adapter = shoppingCartAdapter
@@ -76,10 +65,8 @@ class ShoppingCartFragment : Fragment(){
         view.shoppingCartRecyclerView.layoutManager = layoutManager
         view.shoppingCartRecyclerView.itemAnimator = DefaultItemAnimator()
 
-        val dividerItemDecoration = DividerItemDecoration(
-            view.shoppingCartRecyclerView.context,
-            layoutManager.orientation
-        )
+        val dividerItemDecoration = DividerItemDecoration(view.shoppingCartRecyclerView.context, layoutManager.orientation)
+
         view.shoppingCartRecyclerView.addItemDecoration(dividerItemDecoration)
 
         if (cartItems.isNullOrEmpty()) {
@@ -93,7 +80,6 @@ class ShoppingCartFragment : Fragment(){
     }
 
     private fun subscribeUI(view: View) {
-
         productsViewModel.getCartTotal().observe(activity as MainActivity,
             { t ->
                 val priceText = t.toString() + getString(R.string.kr_currency)
@@ -110,7 +96,6 @@ class ShoppingCartFragment : Fragment(){
                 shoppingCartAdapter.updateCartItems(t)
 
             })
-
     }
 
 }

@@ -15,15 +15,10 @@ import kotlinx.coroutines.launch
  */
 class ProductsViewModel(private val productsRepository: ProductsRepository) : ViewModel() {
 
-
     private var productsLiveData: MutableLiveData<Products> = MutableLiveData()
-
     private var isLoading: MutableLiveData<Boolean> = MutableLiveData()
-
     private var cartSize: MutableLiveData<Int> = MutableLiveData()
-
     private var cartMap: MutableLiveData<HashMap<Product, Int>> = MutableLiveData()
-
     private var cartTotal: MutableLiveData<Double> = MutableLiveData()
 
     /**load products from the file
@@ -31,7 +26,6 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
     init {
         fetchProducts()
     }
-
 
     fun fetchProducts() {
         viewModelScope.launch(Dispatchers.Default) {
@@ -102,7 +96,6 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
         hashMap.forEach { (_, value) ->
             total += value
         }
-
         return total
     }
 
@@ -114,7 +107,6 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
             val price = key.price?.id ?: return 0.0
             total += price.times(value.toDouble())
         }
-
         return String.format("%.1f", total).toDouble()
     }
 }

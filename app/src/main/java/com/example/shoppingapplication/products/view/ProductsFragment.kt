@@ -34,23 +34,17 @@ class ProductsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val fragmentView = inflater.inflate(R.layout.fragment_products, container, false)
-
         setupUI(fragmentView)
-
         subscribeUI(fragmentView)
-
         return fragmentView
     }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         ((activity?.application) as MyApplication).appComponent.inject(this)
     }
 
-
     private fun subscribeUI(view: View) {
-
         productsViewModel.getLoadingStatus().observe(activity as MainActivity,
             {
                 if (it) {
@@ -62,7 +56,6 @@ class ProductsFragment : Fragment() {
 
         productsViewModel.getProductsResponse().observe(activity as MainActivity,
             { t ->
-
                 if (!t.products.isNullOrEmpty()) {
                     view.swipeRefreshLayout.isRefreshing = false
                     view.errorText.visibility = View.GONE
@@ -76,7 +69,6 @@ class ProductsFragment : Fragment() {
 
         productsViewModel.getCartItems().observe(activity as MainActivity,
             { t ->
-
                 cartMap = t
                 if (t.isEmpty()){
                     view.cartSize?.text = "0"
@@ -84,7 +76,6 @@ class ProductsFragment : Fragment() {
                     view.cartSize?.text = productsViewModel.calculateCartSize(t).toString()
                     productsAdapter.setProductMap(t)
                 }
-
             })
 
     }
@@ -93,7 +84,6 @@ class ProductsFragment : Fragment() {
     /**Setup UI elements
      */
     private fun setupUI(view: View) {
-
         productsViewModel =
             ViewModelProvider(this, productsViewModelProvider)
                 .get(ProductsViewModel::class.java)
@@ -124,15 +114,12 @@ class ProductsFragment : Fragment() {
             productsViewModel.fetchProducts()
         }
 
-
         view.showCart.setOnClickListener {
             productsAdapter.setProductMap(cartMap)
             (activity as MainActivity).onCartIconClicked(cartMap)
         }
 
-
     }
-
 
 }
 

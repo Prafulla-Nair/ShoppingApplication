@@ -20,8 +20,8 @@ import javax.inject.Inject
 /**Adapter class for the cart list recycler view
  */
 class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsViewModel) :
-    RecyclerView.Adapter<ShoppingCartAdapter.ViewHolder>() {
 
+    RecyclerView.Adapter<ShoppingCartAdapter.ViewHolder>() {
     private var cartItems = HashMap<Product, Int>()
     private var keyList = emptyList<Product>()
     private var valueList = emptyList<Int>()
@@ -29,21 +29,15 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(product: Product, quantity: Int) {
-
             itemView.productName.text = product.name
             val priceText = product.price?.id.toString() + product.price?.name
             itemView.productPrice.text = priceText
             Picasso.get().load(product.imageUrl).fit().centerInside().into(itemView.productImage)
 
-
             productsViewModel.updateCartTotal(productsViewModel.calculateCartTotal(cartItems))
 
             itemView.findViewById<ImageButton>(R.id.addItem).setOnClickListener {
-                Toast.makeText(
-                    itemView.context,
-                    itemView.context.getString(R.string.item_added),
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(itemView.context, itemView.context.getString(R.string.item_added), Toast.LENGTH_LONG).show()
 
                 if (cartItems.containsKey(product)) {
                     cartItems[product] = cartItems[product]!!.plus(1)
@@ -95,9 +89,7 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.cart_list_item, parent, false)
-
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cart_list_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -108,7 +100,6 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
 
     override fun getItemCount(): Int {
         return cartItems.size
-
     }
 
     fun updateCartItems(cartItems: HashMap<Product, Int>) {
