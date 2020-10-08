@@ -17,8 +17,8 @@ import kotlinx.coroutines.launch
 class ProductsViewModel(private val productsRepository: ProductsRepository) : ViewModel() {
 
 
-    private var productsLiveData: MutableLiveData<Products> =
-        MutableLiveData()
+    private var productsLiveData: MutableLiveData<Products> = MutableLiveData()
+
     private var isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
     private var cartSize: MutableLiveData<Int> = MutableLiveData()
@@ -101,7 +101,7 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
     fun calculateCartSize(hashMap: HashMap<Product, Int>): Int {
         var total = 0
 
-        hashMap.forEach { (key, value) ->
+        hashMap.forEach { (_, value) ->
             total += value
         }
 
@@ -112,9 +112,8 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
         var total = 0.0
         for ((key, value) in cartItems) {
             println("$key = $value")
-
-            total += (key.price?.id)?.times(value.toDouble())!!
-
+            val price = key.price?.id ?: return 0.0
+            total += price.times(value.toDouble())
         }
 
         return String.format("%.1f", total).toDouble()
