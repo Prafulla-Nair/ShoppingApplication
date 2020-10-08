@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Shopping Application</string>
     <string name="error_text">Error in loading the products list. Please try again later.</string>
+    <string name="empty_cart">Your shopping cart is empty.</string>
+    <string name="total">Total</string>
+    <string name="zero_price">0.0kr</string>
     <string name="remove_product">Remove product</string>
     <string name="add_product">Add product</string>
     <string name="product_image">Product image</string>
@@ -12,5 +15,7 @@
     <string name="no_item_to_remove">No item to remove</string>
     <string name="item_added_cart">Item added to cart</string>
     <string name="kr_currency">kr</string>
+    <string name="delete_item">Delete item from cart</string>
+    <string name="zero">0</string>
 
 </resources>

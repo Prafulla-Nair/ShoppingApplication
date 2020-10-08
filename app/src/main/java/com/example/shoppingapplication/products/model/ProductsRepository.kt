@@ -20,7 +20,7 @@ class ProductsRepository @Inject constructor(private val context: Context) {
         withContext(Dispatchers.IO) {
             products =
                 Gson().fromJson(readJSONFromResources(), Products::class.java)
-            Log.d("Test","products - "+products)
+            Log.d("Test", "products - $products")
             return@withContext products
         }
 

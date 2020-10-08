@@ -47,9 +47,9 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
 
             itemView.findViewById<ImageButton>(R.id.addToCart).setOnClickListener {
                 if (productMap.containsKey(product)) {
-                    productMap.put(product, productMap[product]!!.plus(1))
+                    productMap[product] = productMap[product]!!.plus(1)
                 } else {
-                    productMap.put(product, 1)
+                    productMap[product] = 1
                 }
 
 
@@ -100,6 +100,7 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
 
     }
 
+    //notify just the item that has changes - api?
     fun setProductsList(productList: List<Product>) {
         products = productList
         notifyDataSetChanged()

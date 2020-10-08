@@ -21,7 +21,7 @@
             android:background="@android:color/white"
             app:navigationIcon="@drawable/up_arrow"
             app:title="Shopping Cart"
-            app:titleTextColor="@color/colorAccent"></androidx.appcompat.widget.Toolbar>
+            app:titleTextColor="@color/colorAccent" />
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -41,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Your shopping cart is empty."
-        android:textColor="@android:color/black"></TextView>
+        android:text="@string/empty_cart"
+        android:textColor="@android:color/black" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -68,13 +68,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Total"
+            android:text="@string/total"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/totalPrice"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
@@ -82,7 +82,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="RtlCompat"
-            android:text="0.0kr"/>
+            android:text="@string/zero_price"/>
 
         <Button
             android:layout_width="wrap_content"

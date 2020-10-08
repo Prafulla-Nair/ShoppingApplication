@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -67,7 +66,7 @@ class ProductsFragment : Fragment() {
                 if (!t.products.isNullOrEmpty()) {
                     view.swipeRefreshLayout.isRefreshing = false
                     view.errorText.visibility = View.GONE
-                    productsAdapter.setProductsList(t.products!!)
+                    productsAdapter.setProductsList(t.products)
                 } else {
                     view.errorText.visibility = View.VISIBLE
                 }

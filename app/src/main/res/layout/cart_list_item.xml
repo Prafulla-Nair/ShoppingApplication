@@ -82,9 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
                 android:background="@color/colorPrimary"
-                android:contentDescription="delete"
+                android:contentDescription="@string/delete_item"
                 android:src="@drawable/ic_remove_shopping_cart"
-                android:text="Remove"
                 android:tint="@android:color/white"/>
 
             <TextView
@@ -122,7 +121,8 @@
                 android:src="@android:drawable/ic_menu_delete"
                 android:text="@string/remove_product"
                 android:tint="@android:color/white"
-                android:contentDescription="@string/remove_product"/>
+                android:contentDescription="@string/remove_product"
+                android:layout_marginStart="10dp" />
 
 
         </LinearLayout>
