@@ -56,10 +56,7 @@ class ShoppingCartFragment : Fragment(){
     private fun setupUI(view: View) {
 
         val toolbar = view.toolbar as Toolbar
-        toolbar.setNavigationOnClickListener {
-            activity!!.onBackPressed()
-
-        }
+        toolbar.setNavigationOnClickListener { activity!!.onBackPressed() }
 
         productsViewModel =
             ViewModelProvider(this, productsViewModelProvider)
@@ -99,12 +96,15 @@ class ShoppingCartFragment : Fragment(){
 
         productsViewModel.getCartTotal().observe(activity as MainActivity,
             { t ->
-                view.totalPrice.text = t.toString() + getString(R.string.kr_currency)
+                val priceText = t.toString() + getString(R.string.kr_currency)
+                view.totalPrice.text = priceText
             })
 
         productsViewModel.getCartItems().observe(activity as MainActivity,
             { t ->
-                view.totalPrice.text = t.toString() + getString(R.string.kr_currency)
+
+                val priceText = t.toString() + getString(R.string.kr_currency)
+                view.totalPrice.text = priceText
 
                 cartItems = t
                 shoppingCartAdapter.updateCartItems(t)
