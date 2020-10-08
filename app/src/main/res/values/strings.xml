@@ -4,6 +4,7 @@
     <string name="empty_cart">Your shopping cart is empty.</string>
     <string name="total">Total</string>
     <string name="zero_price">0.0kr</string>
+    <string name="number_of_seats">Number of seats - </string>
     <string name="remove_product">Remove product</string>
     <string name="add_product">Add product</string>
     <string name="product_image">Product image</string>

@@ -31,7 +31,8 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
         fun bind(product: Product, quantity: Int) {
 
             itemView.productName.text = product.name
-            itemView.productPrice.text = product.price?.id.toString() + product.price?.name
+            val priceText = product.price?.id.toString() + product.price?.name
+            itemView.productPrice.text = priceText
             Picasso.get().load(product.imageUrl).fit().centerInside().into(itemView.productImage)
 
 

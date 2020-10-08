@@ -30,16 +30,17 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
         fun bind(product: Product) {
 
             itemView.productName.text = product.name
-            itemView.productPrice.text = product.price?.id.toString() + product.price?.name
+            val priceText = product.price?.id.toString() + product.price?.name
+            itemView.productPrice.text = priceText
 
-            //TODO: filter?
+            //TODO: search filter?
             if (product.type.equals("chair")) {
                 Log.d("Test", "chair - " + product.info?.material)
                 itemView.productInfo.text = product.info?.material
             } else if (product.type.equals("couch")) {
-                Log.d("Test", "couch - " + "${product.info?.numberOfSeats}")
-                itemView.productInfo.text =
-                    "Number of seats - " + (product.info?.numberOfSeats).toString()
+                val numberOfSeatsText = itemView.context.getString(R.string.number_of_seats) + (product.info?.numberOfSeats).toString()
+                itemView.productInfo.text = numberOfSeatsText
+
             }
 
 
@@ -100,7 +101,6 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
 
     }
 
-    //notify just the item that has changes - api?
     fun setProductsList(productList: List<Product>) {
         products = productList
         notifyDataSetChanged()

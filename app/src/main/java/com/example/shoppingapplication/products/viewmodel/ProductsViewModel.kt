@@ -1,7 +1,6 @@
 package com.example.shoppingapplication.products.viewmodel
 
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -52,7 +51,6 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
      * @param products
      */
     private fun setProductsResponse(products: Products?) {
-        Log.d("Test", "products - " + products?.products?.size)
         setIsLoading(false)
 
         if (products != null) {
@@ -107,6 +105,7 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
 
         return total
     }
+
 
     fun calculateCartTotal(cartItems: HashMap<Product, Int>): Double {
         var total = 0.0
