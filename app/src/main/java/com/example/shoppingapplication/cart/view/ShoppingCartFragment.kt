@@ -7,16 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingapplication.MainActivity
 import com.example.shoppingapplication.MyApplication
 import com.example.shoppingapplication.R
+import com.example.shoppingapplication.products.model.Product
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModelProvider
-import com.example.shoppingapplication.products.model.Product
 import kotlinx.android.synthetic.main.fragment_shopping_cart.view.*
 import javax.inject.Inject
 
@@ -62,7 +62,7 @@ class ShoppingCartFragment : Fragment(){
         }
 
         productsViewModel =
-            ViewModelProviders.of(this, productsViewModelProvider)
+            ViewModelProvider(this, productsViewModelProvider)
                 .get(ProductsViewModel::class.java)
 
         shoppingCartAdapter = ShoppingCartAdapter(productsViewModel)
@@ -99,12 +99,12 @@ class ShoppingCartFragment : Fragment(){
 
         productsViewModel.getCartTotal().observe(activity as MainActivity,
             { t ->
-                view.totalPrice.text = t.toString() + "kr"
+                view.totalPrice.text = t.toString() + getString(R.string.kr_currency)
             })
 
         productsViewModel.getCartItems().observe(activity as MainActivity,
             { t ->
-                view.totalPrice.text = t.toString() + "kr"
+                view.totalPrice.text = t.toString() + getString(R.string.kr_currency)
 
                 cartItems = t
                 shoppingCartAdapter.updateCartItems(t)

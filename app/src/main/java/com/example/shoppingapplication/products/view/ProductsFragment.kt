@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,9 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingapplication.MainActivity
 import com.example.shoppingapplication.MyApplication
 import com.example.shoppingapplication.R
+import com.example.shoppingapplication.products.model.Product
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModelProvider
-import com.example.shoppingapplication.products.model.Product
 import kotlinx.android.synthetic.main.fragment_products.view.*
 import javax.inject.Inject
 
@@ -95,7 +96,7 @@ class ProductsFragment : Fragment() {
     private fun setupUI(view: View) {
 
         productsViewModel =
-            ViewModelProviders.of(this, productsViewModelProvider)
+            ViewModelProvider(this, productsViewModelProvider)
                 .get(ProductsViewModel::class.java)
 
         val cartItemsMap = productsViewModel.getCartItems()

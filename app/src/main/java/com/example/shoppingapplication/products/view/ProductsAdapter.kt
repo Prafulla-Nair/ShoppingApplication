@@ -8,8 +8,8 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingapplication.R
-import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.example.shoppingapplication.products.model.Product
+import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_row_item.view.*
 import javax.inject.Inject
@@ -30,7 +30,7 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
         fun bind(product: Product) {
 
             itemView.productName.text = product.name
-            itemView.productPrice.text = "${product.price?.id.toString() + product.price?.name}"
+            itemView.productPrice.text = product.price?.id.toString() + product.price?.name
 
             //TODO: filter?
             if (product.type.equals("chair")) {
@@ -39,7 +39,7 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
             } else if (product.type.equals("couch")) {
                 Log.d("Test", "couch - " + "${product.info?.numberOfSeats}")
                 itemView.productInfo.text =
-                    "${"Number of seats - " + (product.info?.numberOfSeats).toString()}"
+                    "Number of seats - " + (product.info?.numberOfSeats).toString()
             }
 
 
@@ -56,18 +56,14 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
                 productViewModel.setCartItems(productMap)
                 productViewModel.setCartSize(productViewModel.calculateCartSize(productMap))
 
-                Toast.makeText(itemView.context, "Item added to cart", Toast.LENGTH_LONG).show()
+                Toast.makeText(itemView.context, itemView.context.getString(R.string.item_added_cart), Toast.LENGTH_LONG).show()
             }
 
             itemView.findViewById<ImageButton>(R.id.removeItem)
                 .setOnClickListener {
                     if (productMap.containsKey(product) && productMap[product]!! >= 2) {
-                        productMap.put(product, productMap[product]!!.minus(1))
-                        Toast.makeText(
-                            itemView.context,
-                            "Item removed from cart",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        productMap[product] = productMap[product]!!.minus(1)
+                        Toast.makeText(itemView.context, itemView.context.getString(R.string.item_removed_cart), Toast.LENGTH_LONG).show()
 
                         productViewModel.setCartItems(productMap)
                         productViewModel.setCartSize(productViewModel.calculateCartSize(productMap))
@@ -76,11 +72,7 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
                         productViewModel.setCartItems(productMap)
                         productViewModel.setCartSize(productViewModel.calculateCartSize(productMap))
                     }else{
-                        Toast.makeText(
-                            itemView.context,
-                            "No item to remove",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Toast.makeText(itemView.context, itemView.context.getString(R.string.no_item_to_remove), Toast.LENGTH_LONG).show()
                     }
 
                 }

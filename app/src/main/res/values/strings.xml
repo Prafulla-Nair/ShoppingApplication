@@ -5,4 +5,12 @@
     <string name="add_product">Add product</string>
     <string name="product_image">Product image</string>
     <string name="checkout">Checkout</string>
+    <string name="item_added">Item added</string>
+    <string name="item_reduced">Number of items reduced</string>
+    <string name="product_removed">Product removed</string>
+    <string name="item_removed_cart">Item removed from cart</string>
+    <string name="no_item_to_remove">No item to remove</string>
+    <string name="item_added_cart">Item added to cart</string>
+    <string name="kr_currency">kr</string>
+
 </resources>

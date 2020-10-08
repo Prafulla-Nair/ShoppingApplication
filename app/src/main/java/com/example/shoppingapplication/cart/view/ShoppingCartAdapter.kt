@@ -7,8 +7,8 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingapplication.R
-import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.example.shoppingapplication.products.model.Product
+import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.cart_list_item.view.*
 import kotlinx.android.synthetic.main.product_row_item.view.productImage
@@ -31,14 +31,18 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
         fun bind(product: Product, quantity: Int) {
 
             itemView.productName.text = product.name
-            itemView.productPrice.text = "${product.price?.id.toString() + product.price?.name}"
+            itemView.productPrice.text = product.price?.id.toString() + product.price?.name
             Picasso.get().load(product.imageUrl).fit().centerInside().into(itemView.productImage)
 
 
             productsViewModel.updateCartTotal(productsViewModel.calculateCartTotal(cartItems))
 
             itemView.findViewById<ImageButton>(R.id.addItem).setOnClickListener {
-                Toast.makeText(itemView.context, "Item added", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    itemView.context,
+                    itemView.context.getString(R.string.item_added),
+                    Toast.LENGTH_LONG
+                ).show()
 
                 if (cartItems.containsKey(product)) {
                     cartItems[product] = cartItems[product]!!.plus(1)
@@ -57,20 +61,11 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
             itemView.findViewById<ImageButton>(R.id.deleteItem).setOnClickListener {
 
                 if (cartItems.containsKey(product) && cartItems[product]!! >= 2) {
-                    Toast.makeText(
-                        itemView.context,
-                        "Number of items reduced",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-
+                    Toast.makeText(itemView.context, itemView.context.getString(R.string.item_reduced), Toast.LENGTH_LONG).show()
                     cartItems[product] = cartItems[product]!!.minus(1)
-
-
                 } else {
                     cartItems.remove(product)
-                    Toast.makeText(itemView.context, "Product removed", Toast.LENGTH_LONG).show()
-
+                    Toast.makeText(itemView.context, itemView.context.getString(R.string.product_removed), Toast.LENGTH_LONG).show()
                 }
 
                 updateCartItems(cartItems)
@@ -83,11 +78,11 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
 
             itemView.findViewById<ImageButton>(R.id.removeItem)
                 .setOnClickListener {
-                    Toast.makeText(itemView.context, "Product removed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(itemView.context, itemView.context.getString(R.string.product_removed), Toast.LENGTH_LONG).show()
                     cartItems.remove(product)
                     updateCartItems(cartItems)
 
-                   productsViewModel.setCartItems(cartItems)
+                    productsViewModel.setCartItems(cartItems)
                     productsViewModel.setCartSize(productsViewModel.calculateCartSize(cartItems))
                     productsViewModel.updateCartTotal(productsViewModel.calculateCartTotal(cartItems))
 

@@ -6,47 +6,47 @@ import com.google.gson.annotations.SerializedName
 data class Products(
     @Expose
     @SerializedName("products")
-    var products: MutableList<Product>? = null
+    val products: MutableList<Product>? = null
 )
 
 
 data class Product(
 
     @SerializedName("id")
-    var id: Int? = null,
+    val id: Int? = null,
 
     @SerializedName("name")
-    var name: String? = null,
+    val name: String? = null,
 
     @SerializedName("price")
-    var price: Price? = null,
+    val price: Price? = null,
 
     @SerializedName("info")
-    var info: Info? = null,
+    val info: Info? = null,
 
     @SerializedName("type")
     var type: String? = null,
 
     @SerializedName("imageUrl")
-    var imageUrl: String? = null)
+    val imageUrl: String? = null)
 
 data class Price(
     @SerializedName("value")
-    var id: Double = 0.0,
+    val id: Double = 0.0,
 
     @SerializedName("currency")
-    var name: String? = null
+    val name: String? = null
 )
 
 data class Info(
     @SerializedName("material")
-    var material: String? = null,
+    val material: String? = null,
 
     @SerializedName("numberOfSeats")
-    var numberOfSeats: Int = 0,
+    val numberOfSeats: Int = 0,
 
     @SerializedName("color")
-    var color: String? = null
+    val color: String? = null
 
 
 )
