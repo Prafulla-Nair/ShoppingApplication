@@ -1,6 +1,5 @@
 package com.example.shoppingapplication
 
-
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
@@ -29,7 +28,6 @@ class MainActivityTest {
             Espresso.onView(withId(R.id.showCart))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
-
         showCartButton.perform(ViewActions.click())
 
         val backButton =
@@ -38,6 +36,4 @@ class MainActivityTest {
 
         backButton.perform(ViewActions.click())
     }
-
-
 }

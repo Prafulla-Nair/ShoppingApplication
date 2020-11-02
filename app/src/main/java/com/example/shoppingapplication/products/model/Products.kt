@@ -9,7 +9,6 @@ data class Products(
     val products: MutableList<Product>? = null
 )
 
-
 data class Product(
 
     @SerializedName("id")
@@ -28,7 +27,8 @@ data class Product(
     var type: String? = null,
 
     @SerializedName("imageUrl")
-    val imageUrl: String? = null)
+    val imageUrl: String? = null
+)
 
 data class Price(
     @SerializedName("value")
@@ -47,6 +47,5 @@ data class Info(
 
     @SerializedName("color")
     val color: String? = null
-
 
 )

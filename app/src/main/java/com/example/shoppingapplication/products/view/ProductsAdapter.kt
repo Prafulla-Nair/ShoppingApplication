@@ -10,13 +10,12 @@ import com.example.shoppingapplication.R
 import com.example.shoppingapplication.products.model.Product
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.product_row_item.view.*
 import javax.inject.Inject
-
+import kotlinx.android.synthetic.main.product_row_item.view.*
 
 /**Adapter class for the products list recycler view
  */
-class ProductsAdapter @Inject constructor(private val productViewModel: ProductsViewModel):
+class ProductsAdapter @Inject constructor(private val productViewModel: ProductsViewModel) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
     private var products = emptyList<Product>()
@@ -28,7 +27,7 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
             itemView.productName.text = product.name
             val priceText = product.price?.id.toString() + product.price?.name
             itemView.productPrice.text = priceText
-            //TODO: search filter?
+            // TODO: search filter?
             if (product.type.equals("chair")) {
                 itemView.productInfo.text = product.info?.material
             } else if (product.type.equals("couch")) {
@@ -55,11 +54,11 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
                         Toast.makeText(itemView.context, itemView.context.getString(R.string.item_removed_cart), Toast.LENGTH_LONG).show()
                         productViewModel.setCartItems(productMap)
                         productViewModel.setCartSize(productViewModel.calculateCartSize(productMap))
-                    }else if(productMap.containsKey(product)  && productMap[product]!! == 1) {
+                    } else if (productMap.containsKey(product) && productMap[product]!! == 1) {
                         productMap.remove(product)
                         productViewModel.setCartItems(productMap)
                         productViewModel.setCartSize(productViewModel.calculateCartSize(productMap))
-                    }else{
+                    } else {
                         Toast.makeText(itemView.context, itemView.context.getString(R.string.no_item_to_remove), Toast.LENGTH_LONG).show()
                     }
                 }
@@ -70,7 +69,6 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row_item, parent, false)
         return ViewHolder(view)
     }
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product: Product = products[position]
@@ -86,15 +84,8 @@ class ProductsAdapter @Inject constructor(private val productViewModel: Products
         notifyDataSetChanged()
     }
 
-
-    fun setProductMap(cartMap: HashMap<Product,Int>){
+    fun setProductMap(cartMap: HashMap<Product, Int>) {
         productMap = cartMap
         productViewModel.setCartItems(cartMap)
     }
-
 }
-
-
-
-
-

@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_holder, ProductsFragment())
             .commit()
-
     }
 
     fun onCartIconClicked(cartItems: HashMap<Product, Int>) {
@@ -28,5 +27,4 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(ShoppingCartFragment::class.java.simpleName)
             .commit()
     }
-
 }

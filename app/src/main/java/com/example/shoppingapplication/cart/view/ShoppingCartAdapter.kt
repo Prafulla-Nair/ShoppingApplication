@@ -10,12 +10,11 @@ import com.example.shoppingapplication.R
 import com.example.shoppingapplication.products.model.Product
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.squareup.picasso.Picasso
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.cart_list_item.view.*
 import kotlinx.android.synthetic.main.product_row_item.view.productImage
 import kotlinx.android.synthetic.main.product_row_item.view.productName
 import kotlinx.android.synthetic.main.product_row_item.view.productPrice
-import javax.inject.Inject
-
 
 /**Adapter class for the cart list recycler view
  */
@@ -41,7 +40,6 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
 
                 if (cartItems.containsKey(product)) {
                     cartItems[product] = cartItems[product]!!.plus(1)
-
                 } else {
                     cartItems[product] = 1
                 }
@@ -50,7 +48,6 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
                 productsViewModel.setCartItems(cartItems)
                 productsViewModel.setCartSize(productsViewModel.calculateCartSize(cartItems))
                 productsViewModel.updateCartTotal(productsViewModel.calculateCartTotal(cartItems))
-
             }
 
             itemView.findViewById<ImageButton>(R.id.deleteItem).setOnClickListener {
@@ -68,7 +65,6 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
                 productsViewModel.setCartItems(cartItems)
                 productsViewModel.setCartSize(productsViewModel.calculateCartSize(cartItems))
                 productsViewModel.updateCartTotal(productsViewModel.calculateCartTotal(cartItems))
-
             }
 
             itemView.findViewById<ImageButton>(R.id.removeItem)
@@ -80,19 +76,15 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
                     productsViewModel.setCartItems(cartItems)
                     productsViewModel.setCartSize(productsViewModel.calculateCartSize(cartItems))
                     productsViewModel.updateCartTotal(productsViewModel.calculateCartTotal(cartItems))
-
                 }
             itemView.productQuantity.text = quantity.toString()
-
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cart_list_item, parent, false)
         return ViewHolder(view)
     }
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(keyList[position], valueList[position])
@@ -108,11 +100,4 @@ class ShoppingCartAdapter @Inject constructor(val productsViewModel: ProductsVie
         valueList = ArrayList(cartItems.values)
         notifyDataSetChanged()
     }
-
-
 }
-
-
-
-
-

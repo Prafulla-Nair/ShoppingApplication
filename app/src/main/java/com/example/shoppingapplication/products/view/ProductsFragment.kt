@@ -16,8 +16,8 @@ import com.example.shoppingapplication.R
 import com.example.shoppingapplication.products.model.Product
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModelProvider
-import kotlinx.android.synthetic.main.fragment_products.view.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.fragment_products.view.*
 
 class ProductsFragment : Fragment() {
 
@@ -63,23 +63,19 @@ class ProductsFragment : Fragment() {
                 } else {
                     view.errorText.visibility = View.VISIBLE
                 }
-
             })
-
 
         productsViewModel.getCartItems().observe(activity as MainActivity,
             { t ->
                 cartMap = t
-                if (t.isEmpty()){
+                if (t.isEmpty()) {
                     view.cartSize?.text = "0"
-                }else{
+                } else {
                     view.cartSize?.text = productsViewModel.calculateCartSize(t).toString()
                     productsAdapter.setProductMap(t)
                 }
             })
-
     }
-
 
     /**Setup UI elements
      */
@@ -89,7 +85,7 @@ class ProductsFragment : Fragment() {
                 .get(ProductsViewModel::class.java)
 
         val cartItemsMap = productsViewModel.getCartItems()
-        if (!cartItemsMap.value.isNullOrEmpty()){
+        if (!cartItemsMap.value.isNullOrEmpty()) {
             cartMap = cartItemsMap.value!!
         }
 
@@ -118,9 +114,5 @@ class ProductsFragment : Fragment() {
             productsAdapter.setProductMap(cartMap)
             (activity as MainActivity).onCartIconClicked(cartMap)
         }
-
     }
-
 }
-
-

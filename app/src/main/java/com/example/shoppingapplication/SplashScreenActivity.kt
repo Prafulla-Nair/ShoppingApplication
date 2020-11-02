@@ -1,6 +1,5 @@
 package com.example.shoppingapplication
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -20,8 +19,6 @@ class SplashscreenActivity : AppCompatActivity() {
 
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-
         }, SPLASH_TIME_OUT)
-
     }
 }

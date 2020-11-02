@@ -17,11 +17,10 @@ import com.example.shoppingapplication.R
 import com.example.shoppingapplication.products.model.Product
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModel
 import com.example.shoppingapplication.products.viewmodel.ProductsViewModelProvider
-import kotlinx.android.synthetic.main.fragment_shopping_cart.view.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.fragment_shopping_cart.view.*
 
-
-class ShoppingCartFragment : Fragment(){
+class ShoppingCartFragment : Fragment() {
 
     private lateinit var shoppingCartAdapter: ShoppingCartAdapter
     private lateinit var fragmentView: View
@@ -57,7 +56,6 @@ class ShoppingCartFragment : Fragment(){
         val bundle = this.arguments
         cartItems = bundle?.getSerializable("cartItems") as HashMap<Product, Int>
 
-
         shoppingCartAdapter.updateCartItems(cartItems)
 
         val layoutManager = LinearLayoutManager(activity)
@@ -76,7 +74,6 @@ class ShoppingCartFragment : Fragment(){
             view.emptyTextView.visibility = View.GONE
             view.shoppingCartRecyclerView.visibility = View.VISIBLE
         }
-
     }
 
     private fun subscribeUI(view: View) {
@@ -94,8 +91,6 @@ class ShoppingCartFragment : Fragment(){
 
                 cartItems = t
                 shoppingCartAdapter.updateCartItems(t)
-
             })
     }
-
 }

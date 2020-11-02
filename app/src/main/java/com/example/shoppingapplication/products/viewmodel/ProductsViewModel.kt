@@ -1,6 +1,5 @@
 package com.example.shoppingapplication.products.viewmodel
 
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +8,6 @@ import com.example.shoppingapplication.products.model.Products
 import com.example.shoppingapplication.products.model.ProductsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
 
 /**View model class
  */
@@ -73,7 +71,6 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
         this.cartSize.postValue(cartSize)
     }
 
-
     fun setCartItems(cartMap: HashMap<Product, Int>) {
         this.cartMap.postValue(cartMap)
     }
@@ -98,7 +95,6 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Vi
         }
         return total
     }
-
 
     fun calculateCartTotal(cartItems: HashMap<Product, Int>): Double {
         var total = 0.0

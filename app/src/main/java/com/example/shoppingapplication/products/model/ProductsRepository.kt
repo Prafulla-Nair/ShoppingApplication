@@ -4,11 +4,11 @@ import android.content.Context
 import android.util.Log
 import com.example.shoppingapplication.R
 import com.google.gson.Gson
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-//Get data
+// Get data
 class ProductsRepository @Inject constructor(private val context: Context) {
 
     private var products: Products? = null
@@ -32,6 +32,4 @@ class ProductsRepository @Inject constructor(private val context: Context) {
                 it.readText()
             }
     }
-
-
 }
